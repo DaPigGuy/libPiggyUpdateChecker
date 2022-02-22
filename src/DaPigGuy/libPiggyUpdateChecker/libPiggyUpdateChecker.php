@@ -10,19 +10,8 @@ use pocketmine\Server;
 
 class libPiggyUpdateChecker
 {
-    public static function init(string $name): void
+    public static function init(Plugin $plugin): void
     {
-        $plugin = self::getPlugin($name);
-        if ($plugin) Server::getInstance()->getAsyncPool()->submitTask(new CheckUpdatesTask($name, $plugin->getDescription()->getVersion()));
-    }
-
-    public static function getPlugin(string $name): ?Plugin
-    {
-        $plugin = Server::getInstance()->getPluginManager()->getPlugin($name);
-        if (!$plugin) {
-            Server::getInstance()->getLogger()->error("Plugin " . $name . " not found.");
-            return null;
-        }
-        return $plugin;
+        Server::getInstance()->getAsyncPool()->submitTask(new CheckUpdatesTask($plugin->getName(), $plugin->getDescription()->getVersion()));
     }
 }
