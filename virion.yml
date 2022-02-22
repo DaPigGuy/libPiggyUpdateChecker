@@ -1,0 +1,5 @@
+name: libPiggyUpdateChecker
+version: 1.0.0
+antigen: DaPigGuy\libPiggyUpdateChecker
+api: 4.0.0
+author: DaPigGuy
