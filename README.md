@@ -4,9 +4,9 @@ libPiggyUpdateChecker is a virion to easily check if an update is available on P
 
 ## Usage
 ```php
-\DaPigGuy\libPiggyUpdateChecker\libPiggyUpdateChecker::init($plugin);
+\DaPigGuy\libPiggyUpdateChecker\libPiggyUpdateChecker::init($name);
 ```
-- `$plugin` is the instance of the plugin you want to check.
+- `$name` is the name of the plugin you want to check
 
 ## License
 
