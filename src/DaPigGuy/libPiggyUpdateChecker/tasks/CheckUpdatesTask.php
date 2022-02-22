@@ -11,7 +11,7 @@ use pocketmine\utils\Internet;
 
 class CheckUpdatesTask extends AsyncTask
 {
-    public function __construct(private String $name, private String $version)
+    public function __construct(private string $name, private string $version)
     {
     }
 
