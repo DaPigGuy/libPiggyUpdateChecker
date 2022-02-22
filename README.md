@@ -3,10 +3,26 @@
 libPiggyUpdateChecker is a virion to easily check if an update is available on Poggit.
 
 ## Usage
+
+### Setup
 ```php
 \DaPigGuy\libPiggyUpdateChecker\libPiggyUpdateChecker::init($plugin);
 ```
 - `$plugin` is the instance of the plugin you want to check.
+
+
+### Example
+
+AmazingPlugin.php
+
+```php
+class AmazingPlugin extends PluginBase{
+  
+    public function onEnable(): void{
+        libPiggyUpdateChecker::init($this);
+    }
+}
+```
 
 ## License
 
