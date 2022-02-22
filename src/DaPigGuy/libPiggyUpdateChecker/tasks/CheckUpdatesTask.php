@@ -11,7 +11,7 @@ use pocketmine\utils\Internet;
 
 class CheckUpdatesTask extends AsyncTask
 {
-    public function __construct(private String $name)
+    public function __construct(private String $name, private String $version)
     {
     }
 
@@ -23,17 +23,17 @@ class CheckUpdatesTask extends AsyncTask
 
     public function onCompletion(): void
     {
-        $plugin = Server::getInstance()->getPluginManager()->getPlugin($this->name);
+        $logger = Server::getInstance()->getLogger();
         [$body, $error] = $this->getResult();
         if ($error) {
-            $plugin->getLogger()->warning("Auto-update check failed.");
-            $plugin->getLogger()->debug($error);
+            $logger->warning("Auto-update check failed.");
+            $logger->debug($error);
         } else {
             $versions = json_decode($body, true);
             if ($versions) foreach ($versions as $version) {
-                if (version_compare($plugin->getDescription()->getVersion(), $version["version"]) === -1) {
+                if (version_compare($this->version, $version["version"]) === -1) {
                     if (ApiVersion::isCompatible(Server::getInstance()->getApiVersion(), $version["api"][0])) {
-                        $plugin->getLogger()->info($this->name . " v" . $version["version"] . " is available for download at " . $version["artifact_url"] . "/" . $this->name . ".phar");
+                        $logger->notice($this->name . " v" . $version["version"] . " is available for download at " . $version["artifact_url"] . "/" . $this->name . ".phar");
                         break;
                     }
                 }
