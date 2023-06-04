@@ -2,6 +2,8 @@
 
 libPiggyUpdateChecker is a virion to easily check if an update is available on Poggit.
 
+**Author original:** [DaPigGuy](https://github.com/DaPigGuy)
+
 ## Usage
 
 ### Setup
